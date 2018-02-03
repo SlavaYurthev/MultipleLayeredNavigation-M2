@@ -1,0 +1,23 @@
+{
+    "name": "sy/multiple-layered-navigation",
+    "description": "N/A",
+    "license": [
+        "OSL-3.0"
+    ],
+    "type": "magento2-module",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Slava Yurthev",
+            "email": "slavik-iii@ukr.net",
+            "homepage": "https://github.com/SlavaYurthev/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "SY\\MultipleLayeredNavigation\\": ""
+        }
+    }
+}
