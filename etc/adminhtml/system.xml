@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Multiple Layered Navigation
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="slava_yurthev" translate="label" sortOrder="1000">
+			<label>Slava Yurthev</label>
+		</tab>
+		<section id="sy_developer" translate="label" sortOrder="9999" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Developer</label>
+			<tab>slava_yurthev</tab>
+			<resource>Magento_Backend::content</resource>
+			<group id="contacts" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Contacts</label>
+				<field id="logo" translate="label" type="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Logo</label>
+					<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Logo</frontend_model>
+				</field>
+				<field id="skype" translate="label" type="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Skype</label>
+					<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Skype</frontend_model>
+				</field>
+				<field id="telegram" translate="label" type="link" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Telegram</label>
+					<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Telegram</frontend_model>
+				</field>
+				<field id="github" translate="label" type="link" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Github</label>
+					<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Github</frontend_model>
+				</field>
+				<field id="marketplace" translate="label" type="link" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Marketplace</label>
+					<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Marketplace</frontend_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

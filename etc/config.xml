@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Multiple Layered Navigation
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<sy_developer>
+			<contacts>
+				<skype>darks_v1rus</skype>
+				<telegram>darks_virus</telegram>
+				<github>SlavaYurthev</github>
+				<marketplace>Slava Yurthev</marketplace>
+			</contacts>
+		</sy_developer>
+	</default>
+</config>

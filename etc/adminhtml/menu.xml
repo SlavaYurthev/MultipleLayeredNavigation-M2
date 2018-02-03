@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Multiple Layered Navigation
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<update id="SY::core"
+			 title="Slava Yurthev"
+			 module="Magento_Backend"
+			 sortOrder="9999"
+			 resource="Magento_Backend::content" />
+		<update id="SY::developer"
+			 title="Developer"
+			 module="Magento_Backend" 
+			 sortOrder="1000"
+			 parent="SY::core"
+			 resource="Magento_Backend::content" />
+		<update id="SY::developer_developer"
+			 title="Developer"
+			 module="Magento_Backend" 
+			 sortOrder="1000"
+			 parent="SY::developer"
+			 action="adminhtml/system_config/edit/section/sy_developer/"
+			 resource="Magento_Backend::content" />
+	</menu>
+</config>
