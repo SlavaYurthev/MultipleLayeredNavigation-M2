@@ -57,10 +57,10 @@ class Preprocessor {
 		return $proceed($filter, $isNegation, $query);
 	}
 	private function getSqlStringByArray(
-		array $array = [],
-		string $field = 'category_ids_index.category_id',
-		string $operator = '=',
-		string $rule = 'OR'
+		$array = [],
+		$field = 'category_ids_index.category_id',
+		$operator = '=',
+		$rule = 'OR'
 	){
 		$statements = [];
 		if(!empty($array)){
