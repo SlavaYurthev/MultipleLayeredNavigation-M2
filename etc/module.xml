@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Multiple Layered Navigation
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="SY_MultipleLayeredNavigation" setup_version="0.1.0">
+		<sequence>
+			<module name="Magento_CatalogSearch"/>
+		</sequence>
+	</module>
+</config>
