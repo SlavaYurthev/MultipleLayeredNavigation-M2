@@ -5,10 +5,10 @@
  * @author Slava Yurthev
  */
 ?>
-<ol class="items">
+<ol class="items sy-multiple-layered-navigation-items">
 	<?php foreach ($filterItems as $filterItem): ?>
-		<li class="item">
-			<?php if ($filterItem->getCount() > 0 && !$filterItem->isActive()): ?>
+		<li class="item <?php if($filterItem->isActive()): ?>active<?php endif; ?>">
+			<?php if ($filterItem->getCount() > 0): ?>
 				<a href="<?php if($filterItem->isActive()): ?><?php echo $block->escapeUrl($filterItem->getRemoveUrl()); ?><?php else: ?><?php echo $block->escapeUrl($filterItem->getUrl()); ?><?php endif; ?>">
 					<?php echo $filterItem->getLabel(); ?>
 					<?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>

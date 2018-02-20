@@ -9,7 +9,6 @@ use Magento\Framework\App\ObjectManager;
 
 class Collection extends \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection {
 	protected $_addedFilters = [];
-	protected $_decimalData = [];
 	public function addFieldToFilter($field, $condition = null){
 		if (is_string($field)) {
 			$this->_addedFilters[$field] = $condition;

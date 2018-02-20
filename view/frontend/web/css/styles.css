@@ -1,0 +1,16 @@
+ol.sy-multiple-layered-navigation-items li a {
+	display: inline-block;
+	width: 100%;
+	padding-left: 24px;
+	margin-left: 0;
+	margin-right: 0;
+	min-height: 18px;
+	box-sizing: border-box;
+	background-image: url(../img/unchecked.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-color: transparent !important;
+}
+ol.sy-multiple-layered-navigation-items li.active a {
+	background-image: url(../img/checked.png);
+}

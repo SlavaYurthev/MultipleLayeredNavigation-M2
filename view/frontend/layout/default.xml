@@ -7,6 +7,9 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="SY_MultipleLayeredNavigation::css/styles.css" />
+	</head>
 	<body>
 		<referenceBlock name="catalog.navigation.renderer">
 			<action method="setTemplate">

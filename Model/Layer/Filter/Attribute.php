@@ -6,6 +6,8 @@
  */
 namespace SY\MultipleLayeredNavigation\Model\Layer\Filter;
 
+use Magento\Framework\App\ObjectManager;
+
 class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 	protected $tagFilter;
 	protected $urlBuilder;
@@ -66,27 +68,20 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 			$collection->addFieldToFilter($field, $condition);
 		}
 		$attribute = $this->getAttributeModel();
-		$optionsFacetedData = $collection->getFacetedData($attribute->getAttributeCode());
-		if ($attribute->getFrontendInput() == 'multiselect') {
-			$originalFacetedData = $productCollection->getFacetedData($attribute->getAttributeCode());
-			foreach ($originalFacetedData as $key => $optionData) {
-				$optionsFacetedData[$key]['count'] -= $optionData['count'];
-				if ($optionsFacetedData[$key]['count'] <= 0) {
-					unset($optionsFacetedData[$key]['count']);
-				}
-			}
-		}
+		$optionsFacetedData = $this->getFacetedData();
 		$options = $attribute->getFrontend()->getSelectOptions();
 		foreach ($options as $option) {
 			if(empty($option['value'])) {
 				continue;
 			}
-			$count = $this->getOptionItemsCount($optionsFacetedData, $option['value']);
-			$this->itemDataBuilder->addItemData(
-				$this->tagFilter->filter($option['label']),
-				$option['value'],
-				$count
-			);
+			if(isset($optionsFacetedData[$option['value']])){
+				$count = $this->getOptionItemsCount($optionsFacetedData, $option['value']);
+				$this->itemDataBuilder->addItemData(
+					$this->tagFilter->filter($option['label']),
+					$option['value'],
+					$count
+				);
+			}
 		}
 		return $this->itemDataBuilder->build();
 	}
@@ -95,5 +90,11 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 			return $faceted[$key]['count'];
 		}
 		return 0;
+	}
+	private function getFacetedData(){
+		$collection = $this->collectionProvider->getCollection($this->getLayer()->getCurrentCategory());
+		$collection->updateSearchCriteriaBuilder();
+		$collection->addCategoryFilter($this->getLayer()->getCurrentCategory());
+		return $collection->getFacetedData($this->getAttributeModel()->getAttributeCode());
 	}
 }
