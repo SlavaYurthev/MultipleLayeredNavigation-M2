@@ -9,6 +9,8 @@ namespace SY\MultipleLayeredNavigation\Model\Layer\Filter;
 class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 	protected $tagFilter;
 	protected $urlBuilder;
+	protected $request;
+	protected $storeManager;
 	protected $collectionProvider;
 	public function __construct(
 		\Magento\Catalog\Model\Layer\Filter\ItemFactory $filterItemFactory,
@@ -16,6 +18,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 		\Magento\Catalog\Model\Layer $layer,
 		\Magento\Catalog\Model\Layer\Filter\Item\DataBuilder $itemDataBuilder,
 		\Magento\Framework\Filter\StripTags $tagFilter,
+		\Magento\Framework\App\RequestInterface $request,
 		\SY\MultipleLayeredNavigation\Model\Url\Builder $urlBuilder,
 		\SY\MultipleLayeredNavigation\Model\Layer\ItemCollectionProvider $collectionProvider,
 		array $data = []
@@ -30,6 +33,8 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 		);
 		$this->tagFilter = $tagFilter;
 		$this->urlBuilder = $urlBuilder;
+		$this->request = $request;
+		$this->storeManager = $storeManager;
 		$this->collectionProvider = $collectionProvider;
 	}
 	public function apply(\Magento\Framework\App\RequestInterface $request){
@@ -56,7 +61,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 	protected function _getItemsData(){
 		$values = $this->urlBuilder->getValuesFromUrl($this->_requestVar);
 		$productCollection = $this->getLayer()->getProductCollection();
-		$collection = $this->collectionProvider->getCollection($this->getLayer()->getCurrentCategory());
+		$collection = $this->collectionProvider->getCollection($this->getCurrentCategory());
 		$collection->updateSearchCriteriaBuilder();
 		$this->getLayer()->prepareProductCollection($collection);
 		foreach ($productCollection->getAddedFilters() as $field => $condition) {
@@ -90,9 +95,15 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 		return 0;
 	}
 	private function getFacetedData(){
-		$collection = $this->collectionProvider->getCollection($this->getLayer()->getCurrentCategory());
+		$collection = $this->collectionProvider->getCollection($this->getCurrentCategory());
 		$collection->updateSearchCriteriaBuilder();
-		$collection->addCategoryFilter($this->getLayer()->getCurrentCategory());
+		$collection->addCategoryFilter($this->getCurrentCategory());
+		if($this->getCurrentCategory()->getId() == $this->storeManager->getStore()->getRootCategoryId()){
+			$collection->addSearchFilter($this->request->getParam('q'));
+		}
 		return $collection->getFacetedData($this->getAttributeModel()->getAttributeCode());
+	}
+	private function getCurrentCategory(){
+		return $this->getLayer()->getCurrentCategory();
 	}
 }

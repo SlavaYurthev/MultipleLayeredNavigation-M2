@@ -79,12 +79,14 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category {
 		if ($category->getIsActive()) {
 			foreach ($categories as $category) {
 				if ($category->getIsActive()) {
-					$count = $this->getOptionItemsCount($optionsFacetedData, $category->getId());
-					$this->itemDataBuilder->addItemData(
-						$this->escaper->escapeHtml($category->getName()),
-						$category->getId(),
-						$count
-					);
+					if(isset($optionsFacetedData[$category->getId()])){
+						$count = $this->getOptionItemsCount($optionsFacetedData, $category->getId());
+						$this->itemDataBuilder->addItemData(
+							$this->escaper->escapeHtml($category->getName()),
+							$category->getId(),
+							$count
+						);
+					}
 				}
 			}
 		}
