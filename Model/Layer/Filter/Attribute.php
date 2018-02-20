@@ -6,8 +6,6 @@
  */
 namespace SY\MultipleLayeredNavigation\Model\Layer\Filter;
 
-use Magento\Framework\App\ObjectManager;
-
 class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute {
 	protected $tagFilter;
 	protected $urlBuilder;
