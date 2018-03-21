@@ -55,7 +55,6 @@ class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price {
 		if (!$values){
 			return $this;
 		}
-		$ranges = [];
 		if($addFilter) {
 			foreach ($values as $value) {
 				list($from, $to) = explode("-", $value);

@@ -29,12 +29,12 @@ class Preprocessor {
 					$statement = [
 						$this->getSqlStringByArray(
 							[floatval($from)],
-							'price',
+							'final_price',
 							'>='
 						),
 						$this->getSqlStringByArray(
 							[floatval($to)],
-							'price',
+							'final_price',
 							'<='
 						)
 					];
