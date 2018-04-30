@@ -8,12 +8,15 @@ namespace SY\MultipleLayeredNavigation\Controller\Adminhtml\Advertisment;
 
 class Close extends \Magento\Backend\App\Action {
 	protected $resultRedirectFactory;
+	protected $moduleDir;
+	protected $file = 'etc/advertisment.json';
 	public function __construct(
 		\Magento\Backend\App\Action\Context $context, 
 		\Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory
 	){
 		parent::__construct($context);
 		$this->resultRedirectFactory = $resultRedirectFactory;
+		$this->moduleDir = dirname(dirname(dirname(__DIR__)));
 	}
 	public function execute(){
 		$time = strtotime('+7 days'); // by default
@@ -34,6 +37,7 @@ class Close extends \Magento\Backend\App\Action {
 		$this->_objectManager->get('Magento\Framework\App\Cache\Manager')->clean(['config']);
 		$resultRedirectFactory = $this->resultRedirectFactory->create();
 		$resultRedirectFactory->setUrl($this->_redirect->getRefererUrl());
+		@unlink(rtrim($this->moduleDir, '/').'/'.ltrim($this->file, '/'));
 		return $resultRedirectFactory;
 	}
 	protected function _isAllowed(){

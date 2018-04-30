@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Multiple Layered Navigation
+ * 
+ * @author Slava Yurthev
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="sy.copyright">
+		<observer name="sy.copyright.multiple.layered.navigation" instance="SY\MultipleLayeredNavigation\Observer\Copyright" />
+	</event>
+</config>

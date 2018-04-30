@@ -1,0 +1,9 @@
+<p><?php echo __('You see this page because you use these extensions developed by me:'); ?></p>
+<ul>
+	<?php foreach($this->getChildNames() as $alias): ?>
+		<li>
+			<?php echo $this->getChildBlock($alias)->toHtml(); ?>
+		</li>
+	<?php endforeach; ?>
+</ul>
+<p><?php echo __('Thanks for your choice ;)'); ?></p>
