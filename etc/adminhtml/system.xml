@@ -39,17 +39,6 @@
 					<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Marketplace</frontend_model>
 				</field>
 			</group>
-			<group id="advertisment" translate="label" type="text" sortOrder="1001" showInDefault="1" showInWebsite="1" showInStore="1">
-				<label>Advertisment</label>
-				<frontend_model>SY\MultipleLayeredNavigation\Block\Adminhtml\System\Config\Form\Field\Advertisment</frontend_model>
-				<field id="time" translate="label" type="text" sortOrder="1" showInDefault="1">
-					<label>Time</label>
-				</field>
-				<field id="subscribed" translate="label" type="select" sortOrder="2" showInDefault="1">
-					<label>Subscribed</label>
-					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-				</field>
-			</group>
 		</section>
 	</system>
 </config>
