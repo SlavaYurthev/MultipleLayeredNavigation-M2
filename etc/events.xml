@@ -7,7 +7,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-	<event name="sy.copyright">
-		<observer name="sy.copyright.multiple.layered.navigation" instance="SY\MultipleLayeredNavigation\Observer\Copyright" />
+	<event name="sy_copyright">
+		<observer name="sy_copyright_multiple_layered_navigation" instance="SY\MultipleLayeredNavigation\Observer\Copyright" />
 	</event>
 </config>

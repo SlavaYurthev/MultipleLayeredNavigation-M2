@@ -23,10 +23,10 @@ class Index extends Action {
 		$layout = $resultPage->getLayout();
 		$layout->addBlock(
 			'SY\MultipleLayeredNavigation\Block\Copyright', 
-			'sy.copyright', 
+			'sy_copyright', 
 			'content'
 		);
-		$this->_eventManager->dispatch('sy.copyright', ['layout' => $layout]);
+		$this->_eventManager->dispatch('sy_copyright', ['layout' => $layout]);
 		return $resultPage;
 	}
 }
